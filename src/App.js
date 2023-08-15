@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Navbar from "./component/Navbar";
+import About from "./component/About";
+import TextForm from "./component/TextForm";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
+let name = "Kishor";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar title="PlayWithTexts" aboutText="About Us" />
+        <div className="container">
+          <Routes>
+            <Route exact path="/about" element={<About />}></Route>
+            <Route
+              exact
+              path="/"
+              element={<TextForm textTitle="Enter Text To Check" />}
+            ></Route>
+          </Routes>
+        </div>
+      </Router>
+    </>
   );
 }
 
